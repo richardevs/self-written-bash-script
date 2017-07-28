@@ -3,7 +3,7 @@ mkdir aead
 cd aead
 yum update -y
 yum groupinstall "Development Tools" -y
-yum install gettext gcc autoconf libtool automake make asciidoc xmlto udns-devel libev-devel -y
+yum install rng-tools gettext gcc autoconf libtool automake make asciidoc xmlto udns-devel libev-devel -y
 yum install epel-release -y
 yum install gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel libev-devel libsodium-devel mbedtls-devel -y
 git clone https://github.com/shadowsocks/shadowsocks-libev.git
