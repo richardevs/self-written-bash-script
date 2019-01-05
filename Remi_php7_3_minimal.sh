@@ -5,6 +5,6 @@ rm -f epel-release-latest-7.noarch.rpm
 rm -f remi-release-7.rpm
 yum install yum-utils -y
 yum-config-manager --enable remi-php73
-yum install php php-fpm php-opcache -y
+yum install php php-fpm php-opcache php-mysqlnd -y
 
 systemctl enable php-fpm
