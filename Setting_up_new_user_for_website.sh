@@ -20,8 +20,8 @@ server {
     server_name  $username.com www.$username.com;
     root         /home/$username/public_html;
 
-    ssl_certificate "/etc/letsencrypt/live/$username.com/fullchain.pem";
-    ssl_certificate_key "/etc/letsencrypt/live/$username.com/privkey.pem";
+    ssl_certificate "/etc/letsencrypt/live/$username/fullchain.pem";
+    ssl_certificate_key "/etc/letsencrypt/live/$username/privkey.pem";
 
     include ssl_config;
     include wordpress_config;
@@ -29,3 +29,10 @@ server {
     add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload";
 }
 EOF
+
+yum install certbot -y
+
+# Temporary solution, you should first move the old certificate to here for testing purpose
+mkdir -p /etc/letsencrypt/live/$username
+touch /etc/letsencrypt/live/$username/fullchain.pem
+touch /etc/letsencrypt/live/$username/privkey.pem
