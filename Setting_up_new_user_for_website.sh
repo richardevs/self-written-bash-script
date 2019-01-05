@@ -1,6 +1,6 @@
 # Setting PHP-FPM user to nginx
 
-username=neko9
+username= # Define username here
 
 useradd $username
 usermod -a -G nginx $username
