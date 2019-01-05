@@ -1,0 +1,2 @@
+acme.sh --issue -d rsl.gd -d www.rsl.gd -w /home/rsl/public_html \
+--keylength ec-384
