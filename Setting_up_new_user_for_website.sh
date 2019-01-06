@@ -7,7 +7,7 @@ usermod -a -G nginx $username
 id $username
 su -c "mkdir /home/$username/public_html" $username
 chgrp nginx /home/$username/public_html
-chmod g+rwxs /home/$username/public_html
+chmod ug+rwxs /home/$username/public_html
 
 su -c 'cat /dev/zero | ssh-keygen -t ed25519 -q -N ""' $username
 su -c "cp /home/$username/.ssh/id_ed25519.pub /home/$username/.ssh/authorized_keys" $username
@@ -17,7 +17,7 @@ chgrp nginx /home/$username
 chmod g+rwx /home/$username
 
 # Because ssh key won't work with others write permission to home.
-# Looking for better solution than turning off strict mode of sshd.
+chmod g-w /home/$username
 
 cat > /etc/nginx/conf.d/$username.conf <<EOF
 server {
