@@ -23,8 +23,8 @@ server {
     server_name  $username.com www.$username.com;
     root         /home/$username/public_html;
 
-    ssl_certificate "/etc/letsencrypt/live/$username/fullchain.pem";
-    ssl_certificate_key "/etc/letsencrypt/live/$username/privkey.pem";
+    ssl_certificate "/root/.acme.sh/$username.com_ecc/fullchain.cer";
+    ssl_certificate_key "/root/.acme.sh/$username.com_ecc/$username.com.key";
 
     include ssl_config;
     include wordpress_config;
