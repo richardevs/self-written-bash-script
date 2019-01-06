@@ -2,8 +2,12 @@
 # Usage:
 #./init.sh username domain
 
-PASS=`pwgen -sy 30 1`
-PASSUSER=`pwgen -sy 30 1`
+username=$1
+
+PASS=`pwgen -s 30 1`
+PASSUSER=`pwgen -s 30 1`
+
+dbpass=`pwgen -s 24 1`
 
 groupadd $1
 useradd -g $1 $1
@@ -16,9 +20,9 @@ sed -i "s/replacehere/$1/g" /etc/nginx/conf.d/$2.conf
 sed -i "s/domain/$2/g" /etc/nginx/conf.d/$2.conf
 
 mysql -u root -p <<MYSQL_SCRIPT
-CREATE DATABASE $1;
-CREATE USER '$1'@'localhost' IDENTIFIED BY '$PASS';
-GRANT ALL PRIVILEGES ON $1.* TO '$1'@'localhost';
+CREATE DATABASE $username;
+CREATE USER '$username'@'localhost' IDENTIFIED BY '$dbpass';
+GRANT ALL PRIVILEGES ON $username.* TO '$username'@'localhost';
 FLUSH PRIVILEGES;
 MYSQL_SCRIPT
 
