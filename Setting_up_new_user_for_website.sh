@@ -34,6 +34,7 @@ server {
 EOF
 
 dbpass=`pwgen -s 24 1`
+echo $dbpass
 
 mysql -u root -p <<MYSQL_SCRIPT
 CREATE DATABASE $username;
