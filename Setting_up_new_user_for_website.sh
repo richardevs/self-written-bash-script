@@ -33,9 +33,11 @@ server {
 }
 EOF
 
-yum install certbot -y
+dbpass=`pwgen -s 24 1`
 
-# Temporary solution, you should first move the old certificate to here for testing purpose
-mkdir -p /etc/letsencrypt/live/$username
-touch /etc/letsencrypt/live/$username/fullchain.pem
-touch /etc/letsencrypt/live/$username/privkey.pem
+mysql -u root -p <<MYSQL_SCRIPT
+CREATE DATABASE $username;
+CREATE USER '$username'@'localhost' IDENTIFIED BY '$dbpass';
+GRANT ALL PRIVILEGES ON $username.* TO '$username'@'localhost';
+FLUSH PRIVILEGES;
+MYSQL_SCRIPT
