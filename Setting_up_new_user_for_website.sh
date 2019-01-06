@@ -13,8 +13,7 @@ su -c 'cat /dev/zero | ssh-keygen -t ed25519 -q -N ""' $username
 su -c "cp /home/$username/.ssh/id_ed25519.pub /home/$username/.ssh/authorized_keys" $username
 chmod 600 /home/$username/.ssh/authorized_keys
 
-chgrp nginx /home/$username
-chmod g+rx /home/$username
+setfacl -m u:nginx:rx /home/$username
 
 cat > /etc/nginx/conf.d/$username.conf <<EOF
 server {
