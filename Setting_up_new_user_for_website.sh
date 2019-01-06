@@ -17,7 +17,7 @@ chgrp nginx /home/$username
 chmod g+rwx /home/$username
 
 # Because ssh key won't work with others write permission to home.
-chmod g-w /home/$username
+# Looking for better solution than turning off strict mode of sshd.
 
 cat > /etc/nginx/conf.d/$username.conf <<EOF
 server {
