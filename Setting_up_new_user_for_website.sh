@@ -14,10 +14,7 @@ su -c "cp /home/$username/.ssh/id_ed25519.pub /home/$username/.ssh/authorized_ke
 chmod 600 /home/$username/.ssh/authorized_keys
 
 chgrp nginx /home/$username
-chmod g+rwx /home/$username
-
-# Because ssh key won't work with others write permission to home.
-chmod g-w /home/$username
+chmod g+rx /home/$username
 
 cat > /etc/nginx/conf.d/$username.conf <<EOF
 server {
