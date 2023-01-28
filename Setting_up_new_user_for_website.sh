@@ -1,6 +1,7 @@
 # Setting PHP-FPM user to nginx
 
 username= # Define username here
+domain=   # Define domain here
 
 useradd $username
 usermod -a -G nginx $username
@@ -21,11 +22,11 @@ cat > /etc/nginx/conf.d/$username.conf <<EOF
 server {
     listen       443 ssl http2;
     listen       [::]:443 ssl http2;
-    server_name  $username.com www.$username.com;
+    server_name  $domain www.$domain;
     root         /home/$username/public_html;
 
-    ssl_certificate "/root/.acme.sh/$username.com_ecc/fullchain.cer";
-    ssl_certificate_key "/root/.acme.sh/$username.com_ecc/$username.com.key";
+    ssl_certificate "/root/.acme.sh/${domain}_ecc/fullchain.cer";
+    ssl_certificate_key "/root/.acme.sh/${domain}_ecc/$domain.key";
 
     include ssl_config;
     include wordpress_config;
