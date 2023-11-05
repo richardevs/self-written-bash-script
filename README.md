@@ -1,5 +1,9 @@
-# WARNING:
+## NOTICE
 
-ALL FILES IN THIS FOLDER ARE CREATED ON MY SERVER ENVIRONMENT AND NEEDS PRE-CREATED FILES TO WORK.
+This repository is now archived and superseded by https://github.com/richardevs/debian12-ansible
 
-DO NOT TRY TO RUN ANY OF THIS SCRIPT STRAIGHT ON YOUR SERVER, CODES ARE FOR REFERENCE ONLY.
+## WARNING
+
+All scripts in this repo are created for my own server and requires pre-created configurations to work.
+
+They are not inteded to be run as it-is, codes are for reference only.
